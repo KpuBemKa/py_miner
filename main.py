@@ -10,11 +10,13 @@ PLAYER_NAME = "cverti"
 TO_MINE_LENGTH = 55  # blocks
 
 # do not change this tho
-BLOCKS_CONSTANT = 8  # acoounts for acceleration from 0 b/s
+BLOCKS_CONSTANT = 10  # acoounts for acceleration from 0 b/s
 FLY_SPEED = 10.8  # blocks per second
+FAST_FLY_SPEED = 21.6 # blocks per second
 SHIFT_TIME = 0.13  # seconds
 
-ONE_WAY_TIME = (TO_MINE_LENGTH  + BLOCKS_CONSTANT) / FLY_SPEED - SHIFT_TIME
+FORWARD_TIME = (TO_MINE_LENGTH  + BLOCKS_CONSTANT) / FAST_FLY_SPEED - SHIFT_TIME
+BACKWARD_TIME = (TO_MINE_LENGTH  + BLOCKS_CONSTANT) / FLY_SPEED - SHIFT_TIME
 
 shell = win32com.client.Dispatch("WScript.Shell")
 shell.AppActivate("Excalibur-Craft " + PLAYER_NAME)
@@ -22,29 +24,53 @@ shell.AppActivate("Excalibur-Craft " + PLAYER_NAME)
 keyboard = KeyboardController()
 mouse = MouseController()
 
-mouse.press(Button.left)
+def align_player():    
+    keyboard.press(Key.space)
+    time.sleep(0.05)
+    keyboard.release(Key.space)
+    time.sleep(0.05)
+    keyboard.press(Key.space)
+    time.sleep(0.15)
+    keyboard.release(Key.space)
+    
+    keyboard.press('s')
+    time.sleep(0.15)
+    keyboard.release('s')
+    keyboard.press('w')
+    time.sleep(0.05)
+    keyboard.release('w')
 
-# first time launch
-keyboard.press("w")
-time.sleep(ONE_WAY_TIME - SHIFT_TIME) 
-keyboard.release("w")
+def start_mining():
+    mouse.press(Button.left)
+    keyboard.press(Key.ctrl_l)
 
-while not win32api.GetKeyState(win32con.VK_F6):
-    keyboard.press("s")
-    keyboard.press(Key.shift)
-    time.sleep(SHIFT_TIME)
-    keyboard.release(Key.shift)
-    time.sleep(ONE_WAY_TIME)
-    keyboard.release("s")
-
+    # first time launch
     keyboard.press("w")
-    keyboard.press(Key.shift)
-    time.sleep(SHIFT_TIME)
-    keyboard.release(Key.shift)
-    time.sleep(ONE_WAY_TIME)
+    time.sleep(FORWARD_TIME) 
     keyboard.release("w")
 
-keyboard.release("w")
-keyboard.release("s")
-mouse.release(Button.left)
-time.sleep(0.1)
+    while not win32api.GetKeyState(win32con.VK_F6):
+        keyboard.press("s")
+        keyboard.press(Key.shift_l)
+        time.sleep(SHIFT_TIME)
+        keyboard.release(Key.shift_l)
+        time.sleep(BACKWARD_TIME)
+        keyboard.release("s")
+
+        keyboard.press("w")
+        keyboard.press(Key.shift_l)
+        time.sleep(SHIFT_TIME)
+        keyboard.release(Key.shift_l)
+        time.sleep(FORWARD_TIME)
+        keyboard.release("w")
+
+    keyboard.release("w")
+    keyboard.release("s")
+    keyboard.release(Key.shift_l)
+    keyboard.release(Key.ctrl_l)
+    mouse.release(Button.left)
+    time.sleep(0.1)
+
+
+align_player()
+start_mining()
