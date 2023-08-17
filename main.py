@@ -10,10 +10,10 @@ PLAYER_NAME = "cverti"
 TO_MINE_LENGTH = 55  # blocks
 
 # do not change this tho
-BLOCKS_CONSTANT = 10  # acoounts for acceleration from 0 b/s
 FLY_SPEED = 10.8  # blocks per second
 FAST_FLY_SPEED = 21.6 # blocks per second
-SHIFT_TIME = 0.13  # seconds
+BLOCKS_CONSTANT = 10  # acoounts for acceleration from 0 b/s
+SHIFT_TIME = 0.12  # seconds
 
 FORWARD_TIME = (TO_MINE_LENGTH  + BLOCKS_CONSTANT) / FAST_FLY_SPEED - SHIFT_TIME
 BACKWARD_TIME = (TO_MINE_LENGTH  + BLOCKS_CONSTANT) / FLY_SPEED - SHIFT_TIME
@@ -24,7 +24,9 @@ shell.AppActivate("Excalibur-Craft " + PLAYER_NAME)
 keyboard = KeyboardController()
 mouse = MouseController()
 
-def align_player():    
+def align_player():
+    # tap() is too fast 
+    
     keyboard.press(Key.space)
     time.sleep(0.05)
     keyboard.release(Key.space)
