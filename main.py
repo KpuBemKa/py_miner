@@ -40,7 +40,7 @@ def efficient_sleep(secs, expected_inaccuracy=0.5):  # for longer times
 
 def align_player():
     # tap() is too fast
-
+    
     keyboard.press(Key.space)
     time.sleep(0.05)
     keyboard.release(Key.space)
