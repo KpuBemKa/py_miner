@@ -2,21 +2,21 @@
 Python Minecraft miner for Excalibur-Craft
 
 
-`EN:`  
-Needed libraries:
-I'll do that later. For now, look at the errors, and use `pip install`
+EN:  
+Needed libraries:  
+I'll do that later. For now, look at the errors, and use pip install
 
-How to use:
+How to use:  
 I'll translate later, just use Google Translate for now, thx :BASED:
 
-`RU:`  
-`Необходимые библиотеки:`  
+RU:  
+Необходимые библиотеки:  
 Потом запишу. Пока что можно просто смотреть на ошибки, и юзать `pip install`
 
-`Как какать:`  
+Как какать:  
 Способ работы скрипта основан на наличии статуса DELUXE для флая и супер-кирки.
 
-Итак:
+Итак:  
 1. Поменять константу `PLAYER_NAME` на свой ник
 2. Поменять константу `TO_MINE_LENGTH` на длину слоя, которую нужно выкопать (расстояние, короче)
 3. Прожать в игре F3+P, чтобы убрать паузу при сворачивании
