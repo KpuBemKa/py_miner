@@ -1,7 +1,7 @@
+import time
 import win32com.client
 import win32api
 import win32con
-import time
 from pynput.keyboard import Key, Controller as KeyboardController
 from pynput.mouse import Button, Controller as MouseController
 
