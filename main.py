@@ -16,6 +16,7 @@ FORWARD_TWEAK_KEY = ']'
 BACKWARD_TWEAK_KEY = '\\'
 DOUBLE_FORWARD_TWEAK_KEY = '['
 DOUBLE_BACKWARD_TWEAK_KEY = '\''
+CLEANUP_RUN_KEY = '.'
 
 # do not change this tho
 FLY_SPEED = 10.8  # blocks per second
@@ -25,13 +26,14 @@ SHIFT_TIME = 0.11  # seconds
 TWEAK_TIME = 0.05
 
 FORWARD_TIME = (TO_MINE_LENGTH) / FAST_FLY_SPEED + 0.23
-BACKWARD_TIME = (TO_MINE_LENGTH) / FLY_SPEED + 0.27
+BACKWARD_TIME = (TO_MINE_LENGTH) / FLY_SPEED + 0.2675
 
 shell = win32com.client.Dispatch("WScript.Shell")
 shell.AppActivate("Excalibur-Craft " + PLAYER_NAME)
 
 forward_tweak_time = 0
 backward_tweak_time = 0
+cleanup_flag = False
 
 
 def main():
@@ -40,7 +42,8 @@ def main():
         '<ctrl>+' + FORWARD_TWEAK_KEY: forward_tweak_pressed,
         '<ctrl>+' + BACKWARD_TWEAK_KEY: backward_tweak_pressed,
         '<ctrl>+' + DOUBLE_FORWARD_TWEAK_KEY: double_forward_tweak_pressed,
-        '<ctrl>+' + DOUBLE_BACKWARD_TWEAK_KEY: double_backward_tweak_pressed
+        '<ctrl>+' + DOUBLE_BACKWARD_TWEAK_KEY: double_backward_tweak_pressed,
+        '<ctrl>+' + CLEANUP_RUN_KEY: cleanup_pressed
     })
     listener.start()
     hotkey_listener.start()
@@ -51,6 +54,11 @@ def main():
     listener.join()
     hotkey_listener.join()
 
+
+def cleanup_pressed():
+    print("Next flyby will be a cleanup one")
+    global cleanup_flag
+    cleanup_flag = True
 
 def forward_tweak_pressed():
     print("Will fly a bit forward")
@@ -112,6 +120,10 @@ def on_press(key):
 
         if key.char == DOUBLE_BACKWARD_TWEAK_KEY:
             double_backward_tweak_pressed()
+            return
+
+        if key.char == CLEANUP_RUN_KEY:
+            cleanup_pressed()
             return
 
     except AttributeError:
@@ -183,6 +195,11 @@ def backward_mine():
 
 
 def shift_down():
+    global cleanup_flag
+    if cleanup_flag:
+        cleanup_flag = False
+        return
+
     keyboard.press(Key.shift_l)
 
     time.sleep(SHIFT_TIME)
