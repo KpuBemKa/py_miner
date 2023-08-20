@@ -11,7 +11,7 @@ mouse = MouseController()
 
 # change this as you need:
 PLAYER_NAME = "cverti"
-TO_MINE_LENGTH = 129  # blocks
+TO_MINE_LENGTH = 39  # blocks
 FORWARD_TWEAK_KEY = ']'
 BACKWARD_TWEAK_KEY = '\\'
 DOUBLE_FORWARD_TWEAK_KEY = '['
@@ -130,6 +130,7 @@ def on_press(key):
         if key is Key.f6:
             keyboard.release("w")
             keyboard.release("s")
+            keyboard.press(Key.shift_l)
             keyboard.release(Key.shift_l)
             keyboard.release(Key.ctrl_l)
             mouse.release(Button.left)
