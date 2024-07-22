@@ -1,16 +1,16 @@
 # py_miner
-Python Minecraft miner for Excalibur-Craft
+Minecraft miner for Excalibur-Craft on Python
 
-EN:  
+# EN:  
 Needed libraries:  
 I'll do that later. For now, look at the errors, and use `pip install`
 
 How to use:  
-I'll translate later, just use Google Translate for now, thx :BASED:
+I'll translate later, just use Google Translate for now
 
-RU:  
-Как запустить:  
-  
+# RU:  
+## Как запустить:  
+
 Windows:  
 1. Установить Python:  
     a. Перейти по ссылке: https://www.python.org/downloads/, и скачать установщик  
@@ -22,15 +22,15 @@ Windows:
 3. Поставить необходимые библиотеки следющими командами:  
     a. `pip install pywin32`  
     b. `pip install pynput`  
-4. Пробовать запустить скрипт  
-  
+4. Пробовать запустить скрипт комадной `python ./main.py`
+
 Linux:  
-Если у тебя Линукс, верю в тебя, разберешься и сам (мне лень писать, спс)  
-  
+Не знаю, не пробовал  
+
 MacOS:  
 Ваще хз, не буду туда лезть  
   
-Как какать:  
+## Как использовать:  
 Способ работы скрипта основан на наличии статуса DELUXE для флая и супер-кирки.
 
 Начнем:  
@@ -65,6 +65,5 @@ MacOS:
 `DOUBLE_BACKWARD_TWEAK_KEY`: кнопка удлинения назад на блок  
   
 Так же есть возможность пройти линию без того, чтобы двигать персонажа вниз. Это нужно тогда, когда на линии скапливаются столбы непрокопанных блоков из-за лагов супер-кирки.  
-  
 По дефолту кнопка активации назначена на `.`, но можно поменять константу:  
 `CLEANUP_RUN_KEY`: следующий проход будет без прожатия шифта  
