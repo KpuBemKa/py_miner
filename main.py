@@ -9,6 +9,9 @@ from miner import Miner
 from settings import START_KEY, STOP_KEY
 
 
+
+
+
 def print_help():
     print("Usage: `python ./main.py <amount of block per line>`")
 
