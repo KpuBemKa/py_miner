@@ -1,7 +1,7 @@
 from pynput.keyboard import Key, KeyCode
 
-START_KEY = Key.f5
-STOP_KEY = Key.f6
+START_KEY = Key.f6
+STOP_KEY = Key.f7
 
 FORWARD_TWEAK_KEY = KeyCode("]")
 BACKWARD_TWEAK_KEY = KeyCode("\\")
