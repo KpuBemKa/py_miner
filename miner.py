@@ -50,6 +50,8 @@ class Miner:
     def start(self):
         if self.__miner_thread is not None:
             return
+        
+        self.__stop_mining_flag = False
 
         self.__miner_thread = threading.Thread(
             target=self.__miner_executor, daemon=True
@@ -59,14 +61,15 @@ class Miner:
     def stop(self):
         if self.__miner_thread is None:
             return
-        
-        self.__listener.stop()
 
         self.__keyboard.release("w")
+        time.sleep(100/1000)
         self.__keyboard.release("s")
-        self.__keyboard.press(Key.shift_l)
+        time.sleep(100/1000)
         self.__keyboard.release(Key.shift_l)
+        time.sleep(100/1000)
         self.__keyboard.release(Key.ctrl_l)
+        time.sleep(100/1000)
         self.__mouse.release(Button.left)
         
         # set a flag to stop miner thread and wait
