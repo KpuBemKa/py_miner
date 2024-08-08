@@ -34,7 +34,7 @@ def main():
         listener.start()
 
         print(f"Ready to mine {line_length} block per line.")
-        
+
         while True:
             time.sleep(1)
     except ValueError:
