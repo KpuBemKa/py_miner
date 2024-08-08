@@ -10,10 +10,10 @@ from pynput.keyboard import (
 from pynput.mouse import Button, Controller as MouseController
 
 from settings import (
-    FORWARD_TWEAK_KEY,
-    BACKWARD_TWEAK_KEY,
-    DOUBLE_FORWARD_TWEAK_KEY,
-    DOUBLE_BACKWARD_TWEAK_KEY,
+    INCREASE_DISTANCE_KEY,
+    DECREASE_DISTANCE_KEY,
+    X2_INCREASE_DISTANCE_KEY,
+    X2_DECREASE_DISTANCE_KEY,
     CLEANUP_RUN_KEY,
 )
 
@@ -173,16 +173,16 @@ class Miner:
 
     def __on_press_listner(self, key: KeyCode):
         try:
-            if key.char == FORWARD_TWEAK_KEY:
+            if key.char == INCREASE_DISTANCE_KEY:
                 self.__forward_tweak_pressed()
 
-            elif key.char == BACKWARD_TWEAK_KEY:
+            elif key.char == DECREASE_DISTANCE_KEY:
                 self.__backward_tweak_pressed()
 
-            elif key.char == DOUBLE_FORWARD_TWEAK_KEY:
+            elif key.char == X2_INCREASE_DISTANCE_KEY:
                 self.__double_forward_tweak_pressed()
 
-            elif key.char == DOUBLE_BACKWARD_TWEAK_KEY:
+            elif key.char == X2_DECREASE_DISTANCE_KEY:
                 self.__double_backward_tweak_pressed()
 
             elif key.char == CLEANUP_RUN_KEY:

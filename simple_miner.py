@@ -6,7 +6,7 @@ from pynput.mouse import Button, Controller as MouseController
 
 from settings import START_KEY, STOP_KEY
 
-RESTART_KEY = Key.f8
+RESTART_KEY = KeyCode(char="`")
 
 
 mouse = MouseController()
