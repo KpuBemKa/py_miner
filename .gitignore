@@ -162,5 +162,7 @@ cython_debug/
 #.idea/
 
 .vscode/
+
 digits.py
 test.py
+speed_lookup_table.py
