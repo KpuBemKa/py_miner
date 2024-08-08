@@ -46,26 +46,43 @@ def get_velocity_next_tick(current_tick_speed: float) -> float:
 
 
 def calc_time_to_reach_block(travel_distance: int) -> float:
-    match travel_distance:
-        case 1:
-            return 0.17
+    distance = 0.0
+    speed = 0.0
+    tick_counter = 0
 
-        case 2:
-            return 0.35
+    while distance < travel_distance:
+        speed = get_velocity_next_tick(speed)
         
-        case 3:
-            return 0.5
-        
-        case 4:
-            return 0.6
-        
-        case 5:
-            return 0.7
-        
-        case 6:
-            return 0.825
-        
-    
+        # if tick_counter % 20 == 0:
+        #     print(speed)
+        print(f"{tick_counter}. {speed} b/t")
+            
+        distance += speed
+        tick_counter += 1
+
+    print(speed)
+
+    return tick_counter / 20
+
+    # match travel_distance:
+    #     case 1:
+    #         return 0.17
+
+    #     case 2:
+    #         return 0.35
+
+    #     case 3:
+    #         return 0.5
+
+    #     case 4:
+    #         return 0.6
+
+    #     case 5:
+    #         return 0.7
+
+    #     case 6:
+    #         return 0.825
+
     # # FLY_FRICTION = 0.05  # ice friction which is the same as flying
     # FLY_FRICTION = 0.546  # ice friction which is the same as flying
     # # ACCEL = 0.53
@@ -114,17 +131,6 @@ def calc_time_to_reach_block(travel_distance: int) -> float:
 
     # print(speed)
     # return tick_counter / 20.0
-    # distance = 0.0
-    # speed = 0.0
-    # tick_counter = 0
-    # while distance < travel_distance:
-    #     speed = get_velocity_next_tick(speed)
-    #     print(speed)
-    #     distance += speed
-    #     tick_counter += 1
-
-    # print(speed)
-    # return tick_counter / 20
 
 
 def fly_blocks(amount: int) -> None:
@@ -152,7 +158,7 @@ def fly_blocks(amount: int) -> None:
 
 def execute_cycle(cycle_len: int) -> None:
     type_command("sethome")
-    
+
     for it in range(1, cycle_len + 1):
         fly_blocks()
 
@@ -190,8 +196,10 @@ def main():
         time.sleep(1)
 
 
-main()
+# main()
 
 # for i in range(1, 6):
 #     calc_time_to_reach_block(i)
 #     print("------")
+
+print(calc_time_to_reach_block(30))
