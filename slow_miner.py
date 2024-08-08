@@ -97,9 +97,9 @@ class SlowMiner:
 
             while True:
                 self.__fly_forward()
-                # self.__shift_player_down()
+                self.__shift_player_down()
                 self.__fly_backward()
-                # self.__shift_player_down()
+                self.__shift_player_down()
 
                 # self.__type_command("repair")
                 # self.__accurate_sleep(200 / 1000)
