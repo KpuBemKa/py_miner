@@ -4,6 +4,8 @@ from pynput.keyboard import Key, KeyCode
 START_KEY = Key.f6
 # The key to stop the mining loop
 STOP_KEY = Key.f7
+# Type `/home` command, and press left mouse button
+HOME_N_RESTART_KEY = KeyCode(char="`")
 
 # Increase the mining distance by half a block only for the next pass
 INCREASE_DISTANCE_KEY = KeyCode(char="]")
