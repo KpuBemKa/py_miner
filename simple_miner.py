@@ -4,9 +4,9 @@ import traceback
 from pynput.keyboard import Key, KeyCode, Listener, Controller as KeyboardController
 from pynput.mouse import Button, Controller as MouseController
 
-from settings import START_KEY, STOP_KEY
+from settings import START_KEY, STOP_KEY, HOME_N_RESTART_KEY
 
-RESTART_KEY = KeyCode(char="`")
+# RESTART_KEY = KeyCode(char="`")
 
 
 mouse = MouseController()
@@ -25,7 +25,7 @@ def main():
                 print("Miner stopped.")
                 mouse.release(Button.left)
 
-            elif key == RESTART_KEY:
+            elif key == HOME_N_RESTART_KEY:
                 mouse.release(Button.left)
                 keyboard.tap("/")
                 time.sleep(0.1)
