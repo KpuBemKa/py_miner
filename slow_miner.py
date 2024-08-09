@@ -10,7 +10,7 @@ STOP_DISTANCE = 2  # blocks
 BASE_ACCEL = 0.049
 FRICTION = 0.91
 
-MAX_SPEED_TRAVEL_TIME = 0.092  # seconds per bock
+MAX_SPEED_BLOCK_TRAVEL_TIME = 0.092  # seconds per bock
 
 
 class TerminateMiningException(Exception):
@@ -77,7 +77,7 @@ class SlowMiner:
                 Amount of blocks to change the distance.\
                 Positive to increase the distance, negative to decrease it
         """
-        self.__fly_time_tweak += tweak_amount * MAX_SPEED_TRAVEL_TIME
+        self.__fly_time_tweak += tweak_amount * MAX_SPEED_BLOCK_TRAVEL_TIME
 
     def ignore_one_shift_down(self) -> None:
         """
@@ -218,7 +218,8 @@ class SlowMiner:
 
         # time.sleep(time_to_sleep)
         while time.perf_counter() < end:
-            if self.__fly_time_tweak > 0:
+            if self.__fly_time_tweak != 0:
                 end += self.__fly_time_tweak
+                print(f"Changed by: {self.__fly_time_tweak}")
                 self.__fly_time_tweak = 0
             continue
