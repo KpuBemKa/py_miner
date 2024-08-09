@@ -90,8 +90,8 @@ class SlowMiner:
         try:
             self.__slow_keyboard_tap(Key.space, delay=50 / 1000)
             self.__accurate_sleep(50 / 1000)
-            self.__slow_keyboard_tap(Key.space, delay=50 / 1000)
-            self.__slow_keyboard_tap(Key.space, delay=100 / 1000)
+            self.__slow_keyboard_tap(Key.space, delay=75 / 1000)
+            # self.__slow_keyboard_tap(Key.space, delay=50 / 1000)
 
             self.__mouse.press(Button.left)
 

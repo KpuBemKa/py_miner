@@ -1,3 +1,4 @@
+import sys
 import time
 import traceback
 
@@ -14,7 +15,11 @@ keyboard = KeyboardController()
 
 
 def main():
+    reverse = False
+    
     try:
+        if len(sys.argv) == 2:
+            reverse = True
 
         def key_press_listener(key: KeyCode | Key):
             if key == START_KEY:
@@ -26,13 +31,25 @@ def main():
                 mouse.release(Button.left)
 
             elif key == HOME_N_RESTART_KEY:
+                keyboard.release(Key.space)
                 mouse.release(Button.left)
                 keyboard.tap("/")
                 time.sleep(0.1)
                 keyboard.type("home")
                 keyboard.tap(Key.enter)
-                time.sleep(0.2)
+                
+                if not reverse:
+                    time.sleep(0.2)
+                    mouse.press(Button.left)
+            
+            elif key == Key.tab:
                 mouse.press(Button.left)
+                keyboard.press(Key.space)
+                time.sleep(50/1000)
+                keyboard.release(Key.space)
+                time.sleep(50/1000)
+                keyboard.press(Key.space)
+                    
 
         listener = Listener(on_press=key_press_listener)
         listener.start()
@@ -41,6 +58,7 @@ def main():
 
         while True:
             time.sleep(1)
+
     except Exception as ex:
         print(
             f"Exception during data reading: {ex.args}\n{ex}\n{traceback.format_exc()}"
