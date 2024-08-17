@@ -31,7 +31,7 @@ class SlowMiner:
         self.__line_length: float = 0
 
         self.__fly_time_tweak: float = 0.0
-        self.__ignore_shift_down: bool = False
+        self.__ignore_shift_down_flag: bool = False
 
         self.__mining_thread: threading.Thread | None = None
         self.__terminate_mining_flag = False
@@ -58,6 +58,9 @@ class SlowMiner:
 
     def stop_mining(self) -> None:
         """Stops the infinte loop of mining started by `start_mining()`"""
+        if self.__mining_thread is None:
+            return
+
         self.__set_terminate_mining_flag()
 
         self.__mouse.release(Button.left)
@@ -84,7 +87,7 @@ class SlowMiner:
         Makes so the next flyby will be started without shifting the player down.
         Useful for when a lot of pillars are accumulated on the line, which may impend the player
         """
-        self.__ignore_shift_down = True
+        self.__ignore_shift_down_flag = True
 
     def __mining_executor(self) -> None:
         try:
@@ -171,12 +174,12 @@ class SlowMiner:
     #     time.sleep(1)
 
     def __shift_player_down(self) -> None:
-        if self.__ignore_shift_down:
-            self.__ignore_shift_down = False
+        if self.__ignore_shift_down_flag:
+            self.__ignore_shift_down_flag = False
             self.__accurate_sleep(100 / 1000)
             return
 
-        self.__slow_keyboard_tap(Key.shift_l, delay=125 / 1000)
+        self.__slow_keyboard_tap(Key.shift_l, delay=135 / 1000)
 
     def __set_terminate_mining_flag(self) -> None:
         self.__terminate_mining_flag = True

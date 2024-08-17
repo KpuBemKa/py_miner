@@ -43,11 +43,15 @@ def main():
                     mouse.press(Button.left)
             
             elif key == Key.tab:
+                if not reverse:
+                    return
+                
+                time.sleep(0.1)
                 mouse.press(Button.left)
-                keyboard.press(Key.space)
-                time.sleep(50/1000)
-                keyboard.release(Key.space)
-                time.sleep(50/1000)
+                # keyboard.press(Key.space)
+                # time.sleep(50/1000)
+                # keyboard.release(Key.space)
+                # time.sleep(50/1000)
                 keyboard.press(Key.space)
                     
 
