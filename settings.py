@@ -9,10 +9,10 @@ HOME_N_RESTART_KEY = KeyCode(char="`")
 
 # Increase the mining distance by half a block only for the next pass
 INCREASE_DISTANCE_KEY = KeyCode(char="]")
-# Decrease the mining distance by half a block only for the next pass
-DECREASE_DISTANCE_KEY = KeyCode(char="\\")
 # Increase the mining distance by a block only for the next pass
 X2_INCREASE_DISTANCE_KEY = KeyCode(char="[")
+# Decrease the mining distance by half a block only for the next pass
+DECREASE_DISTANCE_KEY = KeyCode(char="\\")
 # Decrease the mining distance by a block only for the next pass
 X2_DECREASE_DISTANCE_KEY = KeyCode(char="'")
 # Cancel shifting down for the next pass
